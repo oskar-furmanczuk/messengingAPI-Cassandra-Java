@@ -1,0 +1,23 @@
+create keyspace messenging with replication={'class':'SimpleStrategy', 'replication_factor':1};
+
+use messenging;
+
+
+CREATE TABLE emails_by_magic_number(
+   id uuid,
+   email text,
+   title text,
+   content text,
+   number int,
+   PRIMARY KEY((number), id)
+);
+
+
+CREATE MATERIALIZED VIEW email_by_email_value AS
+    SELECT * FROM email_by_magic_number
+        WHERE email IS NOT NULL AND id IS NOT NULL AND number IS NOT NULL
+    PRIMARY KEY ((email), number, id)
+
+
+
+INSERT INTO email_by_magic_number(id, email, title, content, number) values (now(), 'wio@', 'fvfbbff', 'rgrgffvvbfgrghrg', 70);
