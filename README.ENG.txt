@@ -28,6 +28,11 @@ CREATE MATERIALIZED VIEW email_by_email_value AS
 
 Then build the MessengingAPI project (Maven environment) and run the MessengingApiApplication.java class
 
+or
+
+In the folder with the pom.xml file, open any command-line interpreter (e.g. CMD, Git Bash) and type the following command:
+java -jar target/*.jar
+
 
 1) HOW TO USE
 

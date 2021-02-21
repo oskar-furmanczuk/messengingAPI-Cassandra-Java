@@ -2,6 +2,13 @@ package pl.OskarFurmanczuk.MessengingAPI.model;
 
 import java.util.UUID;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
@@ -24,9 +31,14 @@ public class EmailByMagicNumber {
 	private UUID id;
 		
 	@Column("email")
+	@Email
+	@NotNull
+	@Size(min = 1, max = 20)
 	private String email;
 	
 	@Column("title")
+	@NotNull
+	@Size(min = 3, max = 20)
 	private String title;
 	
 	@Column("content")
@@ -35,11 +47,9 @@ public class EmailByMagicNumber {
 	@JsonProperty("magic_number")
 	@PrimaryKey
 	@Column("number")
+	@NotNull
+	@Digits(fraction = 0, integer = 4)
 	private int number;
 	
 	
-	EmailByMagicNumber(int magic_number){
-		this.number = magic_number;
-	}
-
 }

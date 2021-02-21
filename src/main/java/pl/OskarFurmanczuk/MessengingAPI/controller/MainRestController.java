@@ -2,6 +2,8 @@ package pl.OskarFurmanczuk.MessengingAPI.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.OskarFurmanczuk.MessengingAPI.model.EmailByMagicNumber;
+import pl.OskarFurmanczuk.MessengingAPI.model.MagicNumber;
 import pl.OskarFurmanczuk.MessengingAPI.service.EmailService;
 
 @RequestMapping("/api")
@@ -36,7 +39,7 @@ public class MainRestController {
 	}
 	
 	@PostMapping("/message")
-	public ResponseEntity<EmailByMagicNumber> createEmails(@RequestBody EmailByMagicNumber email) {
+	public ResponseEntity<EmailByMagicNumber> createEmails(@Valid @RequestBody EmailByMagicNumber email) {
 		
 		try {
 			EmailByMagicNumber _email = emailService.save(email);
@@ -48,9 +51,9 @@ public class MainRestController {
 	}
 	
 	@PostMapping("/send")
-	public ResponseEntity<List<EmailByMagicNumber>> sendEmails(@RequestBody EmailByMagicNumber email) {
+	public ResponseEntity<List<EmailByMagicNumber>> sendEmails(@Valid @RequestBody MagicNumber magicNumber) {
 		try {
-		    List<EmailByMagicNumber> _emails = emailService.deleteByMagicNumber(email.getNumber());
+		    List<EmailByMagicNumber> _emails = emailService.deleteByMagicNumber(magicNumber.getNumber());
 		    return new ResponseEntity<>(_emails, HttpStatus.OK);
 		    
 		  } catch (Exception e) {
