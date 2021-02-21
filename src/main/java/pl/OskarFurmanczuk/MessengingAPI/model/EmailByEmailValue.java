@@ -3,8 +3,6 @@ package pl.OskarFurmanczuk.MessengingAPI.model;
 import java.util.UUID;
 
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 

@@ -4,10 +4,8 @@ package pl.OskarFurmanczuk.MessengingAPI.model;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
